@@ -2,11 +2,7 @@ import {StyleSheet, View} from 'react-native';
 import BibleApp from './src/BibleApp';
 
 export default function App() {
-	return (
-		// <View>
-		<BibleApp />
-		// </View>
-	);
+	return <BibleApp />;
 }
 
 const styles = StyleSheet.create({

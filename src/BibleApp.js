@@ -8,17 +8,27 @@ import BooksNavigationPannel from './components/BooksNavigationPannel/BooksNavig
 import ParalellPlacesTextPanel from './components/ParalellPlacesTextPanel/ParalellPlacesTextPanel';
 
 export default function BibleApp() {
+	const [showPopup, setShowPopup] = useState({
+		findText: false,
+		bookmarks: false,
+		toVerse: false,
+		fontFamily: false,
+		fontSize: false,
+		colorSettings: false,
+	});
+	const [fontSize, setFontSize] = useState(12);
 	const [paralellPlacesShow, setParalellPlacesShow] = useState(false);
 	return (
 		<View style={styles.container}>
 			<View style={styles.toolbar}>
 				<ToolsPanel
+					setFontSize={setFontSize}
 					paralellPlacesShow={paralellPlacesShow}
 					setParalellPlacesShow={setParalellPlacesShow}
 				/>
 			</View>
 			<View style={styles.screenContainer}>
-				<BibleTextScreen />
+				<BibleTextScreen fontSize={fontSize} />
 				{paralellPlacesShow && <ParalellPlaces />}
 			</View>
 			<BooksNavigationPannel />
