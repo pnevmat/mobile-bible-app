@@ -1,10 +1,9 @@
 import React, {useState} from 'react';
-import {StyleSheet, Text, View, TextInput} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 import {
 	Entypo,
 	MaterialIcons,
 	MaterialCommunityIcons,
-	Foundation,
 	Ionicons,
 } from '@expo/vector-icons';
 import FindTextModal from './FindTextModal/FindTextModal';
@@ -12,6 +11,8 @@ import GoToVerseModal from './GoToVerseModal/GoToVerseModal';
 import FontFamilyModal from './FontFamilyModal/FontFamilyModal';
 import FontSizeModal from './FontSizeModal/FontSizeModal';
 import SettingsModal from './SettingsModal/SettingsModal';
+import BackgroundColorModal from './BackgroundColorModal/BackgroundColorModal';
+import TextColorModal from './TextColorModal/TextColorModal';
 
 export default function ToolsPanel({
 	setFontSize,
@@ -30,6 +31,7 @@ export default function ToolsPanel({
 
 	return (
 		<View style={styles.container}>
+			{/* Модалка "Найти текст" */}
 			<View style={styles.backdrop}>
 				<Entypo
 					name="magnifying-glass"
@@ -45,9 +47,9 @@ export default function ToolsPanel({
 					setShowModal={setShowModal}
 				/>
 			</View>
-			{/* <Text>Найти текст (иконка с текстовой вспливашкой)</Text> */}
-			<Entypo name="bookmarks" size={24} color="black" />
 			{/* <Text>Закладки (иконка с текстовой вспливашкой)</Text> */}
+			<Entypo name="bookmarks" size={24} color="black" />
+			{/* Модалка "Перейти к стиху" */}
 			<View style={styles.backdrop}>
 				<MaterialIcons
 					name="find-in-page"
@@ -63,7 +65,7 @@ export default function ToolsPanel({
 					setShowModal={setShowModal}
 				/>
 			</View>
-			{/* <Text>Перейти к стиху (иконка с текстовой вспливашкой)</Text> */}
+			{/* Модалка "Семейство шрифтов" */}
 			<View style={styles.backdrop}>
 				<MaterialCommunityIcons
 					name="format-font"
@@ -79,7 +81,7 @@ export default function ToolsPanel({
 					setShowModal={setShowModal}
 				/>
 			</View>
-			{/* <Text>Семейство шрифтов (иконка с текстовой вспливашкой)</Text> */}
+			{/* Модалка "Размер шрифта" */}
 			<View style={styles.backdrop}>
 				<MaterialCommunityIcons
 					name="format-font-size-decrease"
@@ -96,7 +98,7 @@ export default function ToolsPanel({
 					setFontSize={setFontSize}
 				/>
 			</View>
-			{/* <Text>Размер шрифта (иконка с текстовой вспливашкой)</Text> */}
+			{/* Модалка "Настройки" */}
 			<View style={styles.backdrop}>
 				<Ionicons
 					name="settings"
@@ -111,7 +113,18 @@ export default function ToolsPanel({
 					showModal={showModal}
 					setShowModal={setShowModal}
 				/>
+				<BackgroundColorModal
+					isVisible={showModal.backgroundColorSettings}
+					showModal={showModal}
+					setShowModal={setShowModal}
+				/>
+				<TextColorModal
+					isVisible={showModal.textColorSettings}
+					showModal={showModal}
+					setShowModal={setShowModal}
+				/>
 			</View>
+			{/* Екран "Паралельние места" */}
 			<MaterialCommunityIcons
 				onClick={() => {
 					setParalellPlacesShow(!paralellPlacesShow);
@@ -120,9 +133,8 @@ export default function ToolsPanel({
 				size={24}
 				color="black"
 			/>
-			{/* <Text>Паралельние места (иконка с текстовой вспливашкой)</Text> */}
+			{/* Кнопка "Закрить приложение" */}
 			<MaterialCommunityIcons name="close-circle" size={24} color="black" />
-			{/* <Text>Закрить приложение (иконка с текстовой вспливашкой)</Text> */}
 		</View>
 	);
 }

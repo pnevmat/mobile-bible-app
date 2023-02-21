@@ -24,7 +24,7 @@ export default function FindTextModal({isVisible, showModal, setShowModal}) {
 			</View>
 			<View style={styles.modalButtonContainer}>
 				<Text
-					style={styles.modulButton}
+					style={styles.modalButton}
 					onClick={() => {
 						setTextChange('');
 						setShowModal({...showModal, findText: !showModal.findText});
@@ -32,7 +32,7 @@ export default function FindTextModal({isVisible, showModal, setShowModal}) {
 					Найти
 				</Text>
 				<Text
-					style={styles.modulButton}
+					style={styles.modalButton}
 					onClick={() => {
 						setTextChange('');
 						setShowModal({...showModal, findText: !showModal.findText});

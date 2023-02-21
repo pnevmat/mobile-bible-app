@@ -4,36 +4,37 @@ import ModalCustomizable from '../../Modal/Modal';
 
 import styles from './styles';
 
-export default function SettingsModal({isVisible, showModal, setShowModal}) {
+export default function TextColorModal({isVisible, showModal, setShowModal}) {
 	return (
 		<ModalCustomizable
 			isVisible={isVisible}
 			propStyles={styles.propStyles}
 			animationType="fade">
-			<Text>Настройки</Text>
-			<View style={styles.settingsContainer}>
-				<View
-					style={styles.settingContainer}
-					onClick={() =>
-						setShowModal({
-							...showModal,
-							backgroundColorSettings: !showModal.backgroundColorSettings,
-							settings: !showModal.settings,
-						})
-					}>
-					<Text>Цвет фона</Text>
-				</View>
-				<View
-					style={styles.settingContainer}
+			<Text>Цвет шрифта</Text>
+			<View style={styles.textColorsContainer}>
+				<Text>Мап с цветами шрифтов</Text>
+			</View>
+			<View style={styles.modalButtonContainer}>
+				<Text
+					style={styles.modalButton}
 					onClick={() =>
 						setShowModal({
 							...showModal,
 							textColorSettings: !showModal.textColorSettings,
-							settings: !showModal.settings,
 						})
 					}>
-					<Text>Цвет шрифта</Text>
-				</View>
+					Сохранить
+				</Text>
+				<Text
+					style={styles.modalButton}
+					onClick={() =>
+						setShowModal({
+							...showModal,
+							textColorSettings: !showModal.textColorSettings,
+						})
+					}>
+					Отмена
+				</Text>
 			</View>
 		</ModalCustomizable>
 	);
